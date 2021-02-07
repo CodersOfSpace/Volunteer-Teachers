@@ -14,13 +14,17 @@ class _NewMessageState extends State<NewMessage> {
   void _sendMessage() async {
     FocusScope.of(context).unfocus();
     final user = FirebaseAuth.instance.currentUser;
-    final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+    final userData = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get();
     FirebaseFirestore.instance.collection('chat').add({
       'text': _enteredMessage,
       'createdAt': Timestamp.now(),
       'userId': user.uid,
       'username': userData.data()['username'],
-      'userImage': userData.data()['image_url']
+      'userImage': userData.data()['image_url'],
+      'job': userData.data()['job'],
     });
     _controller.clear();
   }
@@ -28,6 +32,7 @@ class _NewMessageState extends State<NewMessage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       margin: EdgeInsets.only(top: 8),
       padding: EdgeInsets.all(8),
       child: Row(
@@ -47,9 +52,13 @@ class _NewMessageState extends State<NewMessage> {
             ),
           ),
           IconButton(
-            color: Theme.of(context).primaryColor,
-            icon: Icon(
-              Icons.send,
+            icon: IconTheme(
+              data: IconThemeData(
+                color: Colors.purple,
+              ),
+              child: Icon(
+                Icons.send,
+              ),
             ),
             onPressed: _enteredMessage.trim().isEmpty ? null : _sendMessage,
           )

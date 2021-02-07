@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:flutter_complete_guide/screens/auth_screen.dart';
-import 'package:flutter_complete_guide/screens/chat_screen.dart';
-import 'package:flutter_complete_guide/screens/splash_screen.dart';
+import './screens/auth_screen.dart';
+import './screens/chat_screen.dart';
+import './screens/splash_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,14 +21,15 @@ class MyApp extends StatelessWidget {
         future: _initialization,
         builder: (context, appSnapshot) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'FlutterChat',
             theme: ThemeData(
-              primarySwatch: Colors.pink,
-              backgroundColor: Colors.pink,
-              accentColor: Colors.deepPurple,
+              primarySwatch: Colors.purple,
+              backgroundColor: Colors.grey[500],
+              accentColor: Colors.orange,
               accentColorBrightness: Brightness.dark,
               buttonTheme: ButtonTheme.of(context).copyWith(
-                buttonColor: Colors.pink,
+                //buttonColor: Colors.red,
                 textTheme: ButtonTextTheme.primary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),

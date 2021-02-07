@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MessageBubble extends StatelessWidget {
   MessageBubble(
     this.message,
     this.userName,
     this.userImage,
+    this.job,
     this.isMe, {
     this.key,
   });
@@ -13,6 +16,7 @@ class MessageBubble extends StatelessWidget {
   final String message;
   final String userName;
   final String userImage;
+  final String job;
   final bool isMe;
 
   @override
@@ -25,43 +29,36 @@ class MessageBubble extends StatelessWidget {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                color: isMe ? Colors.grey[300] : Theme.of(context).accentColor,
+                color: isMe ? Colors.blueGrey : Colors.grey,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
+                  topLeft: Radius.circular(18),
+                  topRight: Radius.circular(18),
                   bottomLeft: !isMe ? Radius.circular(0) : Radius.circular(12),
                   bottomRight: isMe ? Radius.circular(0) : Radius.circular(12),
                 ),
               ),
-              width: 140,
+              width: 160,
+              height: 70,
               padding: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 16,
+                vertical: isMe ? 16 : 16,
+                horizontal: isMe ? 5 : 5,
               ),
               margin: EdgeInsets.symmetric(
-                vertical: 16,
-                horizontal: 8,
+                vertical: isMe ? 16 : 16,
+                horizontal: isMe ? 5 : 5,
               ),
               child: Column(
                 crossAxisAlignment:
                     isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    userName,
+                    '$userName ($job)',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: isMe
-                          ? Colors.black
-                          : Theme.of(context).accentTextTheme.title.color,
-                    ),
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   Text(
                     message,
-                    style: TextStyle(
-                      color: isMe
-                          ? Colors.black
-                          : Theme.of(context).accentTextTheme.title.color,
-                    ),
+                    style: TextStyle(color: Colors.black),
                     textAlign: isMe ? TextAlign.end : TextAlign.start,
                   ),
                 ],
@@ -70,9 +67,9 @@ class MessageBubble extends StatelessWidget {
           ],
         ),
         Positioned(
-          top: 0,
-          left: isMe ? null : 120,
-          right: isMe ? 120 : null,
+          top: -5,
+          left: isMe ? 220 : 140,
+          //right: isMe ? 120 : 150,
           child: CircleAvatar(
             backgroundImage: NetworkImage(
               userImage,

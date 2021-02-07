@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'package:flutter_complete_guide/widgets/chat/messages.dart';
-import 'package:flutter_complete_guide/widgets/chat/new_message.dart';
+import '../widgets/chat/messages.dart';
+import '../widgets/chat/new_message.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -33,7 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FlutterChat'),
+        title: Text('Chat'),
+        backgroundColor: Colors.teal[700],
         actions: [
           DropdownButton(
             underline: Container(),
@@ -64,12 +65,24 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       body: Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Messages(),
+        child: Stack(
+          children: [
+            Image(
+              image: NetworkImage(
+                'https://qph.fs.quoracdn.net/main-qimg-8b585fb4a5c9fedbb899cfb0cf0331a7',
+              ),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              fit: BoxFit.cover,
             ),
-            NewMessage(),
+            Column(
+              children: <Widget>[
+                Expanded(
+                  child: Messages(),
+                ),
+                NewMessage(),
+              ],
+            ),
           ],
         ),
       ),

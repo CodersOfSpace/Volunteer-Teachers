@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
-import 'package:flutter_complete_guide/widgets/auth/auth_form.dart';
+import '../widgets/auth/auth_form.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -21,6 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
     String email,
     String password,
     String username,
+    String job,
     File image,
     bool isLogin,
     BuildContext ctx,
@@ -58,6 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
           'username': username,
           'email': email,
           'image_url': url,
+          'job': job.toUpperCase(),
         });
       }
     } on PlatformException catch (err) {
@@ -87,10 +87,31 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: AuthForm(
-        _submitAuthForm,
-        _isLoading,
+      backgroundColor: Colors.blueGrey,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Image(
+              image: NetworkImage(
+                'https://i.hizliresim.com/PXiLP6.png',
+              ),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              fit: BoxFit.cover,
+            ),
+            Column(
+              children: [
+                SizedBox(
+                  height: 450,
+                ),
+                AuthForm(
+                  _submitAuthForm,
+                  _isLoading,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
