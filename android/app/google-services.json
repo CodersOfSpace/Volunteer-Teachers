@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "76765272809",
+    "firebase_url": "https://coders-of-space-default-rtdb.firebaseio.com",
+    "project_id": "coders-of-space",
+    "storage_bucket": "coders-of-space.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76765272809:android:a26f440dac8bf529bb2e78",
+        "android_client_info": {
+          "package_name": "com.yusuferdogan.volunteers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76765272809-8bji0fbi2rnm4s2mh5itja8o07psr2qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG7Ryl87kRCyWv-XR67TidQmYZVYpGkJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76765272809-8bji0fbi2rnm4s2mh5itja8o07psr2qv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
